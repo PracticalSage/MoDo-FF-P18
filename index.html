@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MoDo FF P18</title>
 
   <style>
@@ -13,39 +12,105 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      min-height: 100vh;
       font-family: Arial, sans-serif;
     }
 
-    #pitch {
-      width: 90vw;
-      max-width: 700px;
-      aspect-ratio: 2 / 3;
-      background: #43a047;
-      border: 4px solid white;
-      position: relative;
-      overflow: hidden;
+    .app {
+      width: 94vw;
+      max-width: 520px;
     }
 
-    .player {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #1976d2;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      touch-action: none;
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: white;
+      border-radius: 6px;
+    }
+
+    .line {
+      stroke: white;
+      stroke-width: 1.1;
+      fill: none;
+    }
+
+    .goal {
+      fill: #eeeeee;
+      stroke: #555;
+      stroke-width: 0.35;
+    }
+
+    .net {
+      stroke: #777;
+      stroke-width: 0.12;
     }
   </style>
 </head>
 
 <body>
+  <div class="app">
+    <svg viewBox="0 0 20 30" aria-label="5 mot 5 fotbollsplan">
+      <defs>
+        <pattern id="grass" width="20" height="3" patternUnits="userSpaceOnUse">
+          <rect width="20" height="1.5" fill="#55aa35" />
+          <rect y="1.5" width="20" height="1.5" fill="#4fa332" />
+        </pattern>
+      </defs>
 
-  <div id="pitch">
-    <div class="player"></div>
+      <!-- Gräs -->
+      <rect x="0" y="0" width="20" height="30" fill="url(#grass)" />
+
+      <!-- Ytterlinjer -->
+      <rect x="0" y="0" width="20" height="30" class="line" />
+
+      <!-- Mittlinje och mittcirkel -->
+      <line x1="0" y1="15" x2="20" y2="15" class="line" />
+      <circle cx="10" cy="15" r="2.2" class="line" />
+      <circle cx="10" cy="15" r="0.12" fill="white" />
+
+      <!-- Övre målvaktsområde -->
+      <rect x="3.5" y="0" width="13" height="5.5" class="line" />
+      <rect x="6.5" y="0" width="7" height="2.2" class="line" />
+      <circle cx="10" cy="4.1" r="0.12" fill="white" />
+      <path d="M 7.8 5.5 A 2.2 2.2 0 0 0 12.2 5.5" class="line" />
+
+      <!-- Nedre målvaktsområde -->
+      <rect x="3.5" y="24.5" width="13" height="5.5" class="line" />
+      <rect x="6.5" y="27.8" width="7" height="2.2" class="line" />
+      <circle cx="10" cy="25.9" r="0.12" fill="white" />
+      <path d="M 7.8 24.5 A 2.2 2.2 0 0 1 12.2 24.5" class="line" />
+
+      <!-- Hörnbågar -->
+      <path d="M 0 0.7 A 0.7 0.7 0 0 0 0.7 0" class="line" />
+      <path d="M 19.3 0 A 0.7 0.7 0 0 0 20 0.7" class="line" />
+      <path d="M 0.7 30 A 0.7 0.7 0 0 0 0 29.3" class="line" />
+      <path d="M 20 29.3 A 0.7 0.7 0 0 0 19.3 30" class="line" />
+
+      <!-- Mål, 3 m breda på 20 m plan -->
+      <g transform="translate(8.5 -0.6)">
+        <rect width="3" height="0.6" class="goal" />
+        <line x1="0.5" y1="0" x2="0.5" y2="0.6" class="net" />
+        <line x1="1" y1="0" x2="1" y2="0.6" class="net" />
+        <line x1="1.5" y1="0" x2="1.5" y2="0.6" class="net" />
+        <line x1="2" y1="0" x2="2" y2="0.6" class="net" />
+        <line x1="2.5" y1="0" x2="2.5" y2="0.6" class="net" />
+        <line x1="0" y1="0.3" x2="3" y2="0.3" class="net" />
+      </g>
+
+      <g transform="translate(8.5 30)">
+        <rect width="3" height="0.6" class="goal" />
+        <line x1="0.5" y1="0" x2="0.5" y2="0.6" class="net" />
+        <line x1="1" y1="0" x2="1" y2="0.6" class="net" />
+        <line x1="1.5" y1="0" x2="1.5" y2="0.6" class="net" />
+        <line x1="2" y1="0" x2="2" y2="0.6" class="net" />
+        <line x1="2.5" y1="0" x2="2.5" y2="0.6" class="net" />
+        <line x1="0" y1="0.3" x2="3" y2="0.3" class="net" />
+      </g>
+
+      <!-- Testspelare -->
+      <circle cx="10" cy="15" r="0.45" fill="#1976d2" stroke="#111" stroke-width="0.08" />
+    </svg>
   </div>
-
 </body>
 </html>
