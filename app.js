@@ -96,3 +96,6 @@ svg.addEventListener("mouseup", () => {
 addBlueButton.addEventListener("click", () => addPlayer("blue"));
 addRedButton.addEventListener("click", () => addPlayer("red"));
 addConeButton.addEventListener("click", addCone);
+drawPassButton.addEventListener("click", () => {
+  currentTool = "pass";
+});
