@@ -1,24 +1,24 @@
 const svg = document.querySelector("svg");
 const player = document.querySelector(".player-blue");
 
-let selectedElement = null;
+let isDragging = false;
 
 function getSvgPoint(event) {
   const point = svg.createSVGPoint();
-
   point.x = event.clientX;
   point.y = event.clientY;
-
   return point.matrixTransform(svg.getScreenCTM().inverse());
 }
 
 player.addEventListener("pointerdown", (event) => {
-  selectedElement = player;
-  player.setPointerCapture(event.pointerId);
+  event.preventDefault();
+  isDragging = true;
 });
 
-player.addEventListener("pointermove", (event) => {
-  if (!selectedElement) return;
+svg.addEventListener("pointermove", (event) => {
+  if (!isDragging) return;
+
+  event.preventDefault();
 
   const position = getSvgPoint(event);
 
@@ -26,6 +26,10 @@ player.addEventListener("pointermove", (event) => {
   player.setAttribute("cy", position.y);
 });
 
-player.addEventListener("pointerup", () => {
-  selectedElement = null;
+svg.addEventListener("pointerup", () => {
+  isDragging = false;
+});
+
+svg.addEventListener("pointercancel", () => {
+  isDragging = false;
 });
