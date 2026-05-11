@@ -51,3 +51,10 @@ svg {
   cursor: grab;
   touch-action: none;
 }
+svg {
+  touch-action: none;
+}
+
+#player1 {
+  touch-action: none;
+}
