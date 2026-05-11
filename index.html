@@ -3,54 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>MoDo FF P18</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #1e1e1e;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-    }
-
-    .app {
-      width: 94vw;
-      max-width: 520px;
-    }
-
-    svg {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: white;
-      border-radius: 6px;
-    }
-
-    .line {
-      stroke: white;
-      stroke-width: 1.1;
-      fill: none;
-    }
-
-    .goal {
-      fill: #eeeeee;
-      stroke: #555;
-      stroke-width: 0.35;
-    }
-
-    .net {
-      stroke: #777;
-      stroke-width: 0.12;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+
   <div class="app">
-    <svg viewBox="0 0 20 30" aria-label="5 mot 5 fotbollsplan">
+
+    <svg viewBox="0 0 20 30">
+
       <defs>
         <pattern id="grass" width="20" height="3" patternUnits="userSpaceOnUse">
           <rect width="20" height="1.5" fill="#55aa35" />
@@ -61,56 +25,93 @@
       <!-- Gräs -->
       <rect x="0" y="0" width="20" height="30" fill="url(#grass)" />
 
-      <!-- Ytterlinjer -->
-      <rect x="0" y="0" width="20" height="30" class="line" />
+      <!-- Ytterlinje -->
+      <rect x="0.2" y="0.2" width="19.6" height="29.6" class="field-line" />
 
-      <!-- Mittlinje och mittcirkel -->
-      <line x1="0" y1="15" x2="20" y2="15" class="line" />
-      <circle cx="10" cy="15" r="2.2" class="line" />
+      <!-- Mittlinje -->
+      <line x1="0.2" y1="15" x2="19.8" y2="15" class="field-line" />
+
+      <!-- Mittcirkel -->
+      <circle cx="10" cy="15" r="2.6" class="field-line" />
       <circle cx="10" cy="15" r="0.12" fill="white" />
 
-      <!-- Övre målvaktsområde -->
-      <rect x="3.5" y="0" width="13" height="5.5" class="line" />
-      <rect x="6.5" y="0" width="7" height="2.2" class="line" />
-      <circle cx="10" cy="4.1" r="0.12" fill="white" />
-      <path d="M 7.8 5.5 A 2.2 2.2 0 0 0 12.2 5.5" class="line" />
+      <!-- Övre straffområde -->
+      <rect x="4.2" y="0.2" width="11.6" height="4.8" class="field-line" />
 
-      <!-- Nedre målvaktsområde -->
-      <rect x="3.5" y="24.5" width="13" height="5.5" class="line" />
-      <rect x="6.5" y="27.8" width="7" height="2.2" class="line" />
-      <circle cx="10" cy="25.9" r="0.12" fill="white" />
-      <path d="M 7.8 24.5 A 2.2 2.2 0 0 1 12.2 24.5" class="line" />
+      <!-- Övre målområde -->
+      <rect x="7" y="0.2" width="6" height="1.9" class="field-line" />
 
-      <!-- Hörnbågar -->
-      <path d="M 0 0.7 A 0.7 0.7 0 0 0 0.7 0" class="line" />
-      <path d="M 19.3 0 A 0.7 0.7 0 0 0 20 0.7" class="line" />
-      <path d="M 0.7 30 A 0.7 0.7 0 0 0 0 29.3" class="line" />
-      <path d="M 20 29.3 A 0.7 0.7 0 0 0 19.3 30" class="line" />
+      <!-- Övre straffpunkt -->
+      <circle cx="10" cy="3.5" r="0.1" fill="white" />
 
-      <!-- Mål, 3 m breda på 20 m plan -->
-      <g transform="translate(8.5 -0.6)">
-        <rect width="3" height="0.6" class="goal" />
-        <line x1="0.5" y1="0" x2="0.5" y2="0.6" class="net" />
-        <line x1="1" y1="0" x2="1" y2="0.6" class="net" />
-        <line x1="1.5" y1="0" x2="1.5" y2="0.6" class="net" />
-        <line x1="2" y1="0" x2="2" y2="0.6" class="net" />
-        <line x1="2.5" y1="0" x2="2.5" y2="0.6" class="net" />
-        <line x1="0" y1="0.3" x2="3" y2="0.3" class="net" />
+      <!-- Övre båge -->
+      <path
+        d="M 7.8 5
+           A 2.2 2.2 0 0 0 12.2 5"
+        class="field-line"
+      />
+
+      <!-- Nedre straffområde -->
+      <rect x="4.2" y="25" width="11.6" height="4.8" class="field-line" />
+
+      <!-- Nedre målområde -->
+      <rect x="7" y="27.9" width="6" height="1.9" class="field-line" />
+
+      <!-- Nedre straffpunkt -->
+      <circle cx="10" cy="26.5" r="0.1" fill="white" />
+
+      <!-- Nedre båge -->
+      <path
+        d="M 7.8 25
+           A 2.2 2.2 0 0 1 12.2 25"
+        class="field-line"
+      />
+
+      <!-- Hörn -->
+      <path d="M 0.2 1 A 0.8 0.8 0 0 0 1 0.2" class="field-line" />
+      <path d="M 19 0.2 A 0.8 0.8 0 0 0 19.8 1" class="field-line" />
+      <path d="M 0.2 29 A 0.8 0.8 0 0 0 1 29.8" class="field-line" />
+      <path d="M 19 29.8 A 0.8 0.8 0 0 0 19.8 29" class="field-line" />
+
+      <!-- Övre mål -->
+      <g transform="translate(8.5,-0.45)">
+        <rect width="3" height="0.45" class="goal" />
+
+        <line x1="0.5" y1="0" x2="0.5" y2="0.45" class="net" />
+        <line x1="1" y1="0" x2="1" y2="0.45" class="net" />
+        <line x1="1.5" y1="0" x2="1.5" y2="0.45" class="net" />
+        <line x1="2" y1="0" x2="2" y2="0.45" class="net" />
+        <line x1="2.5" y1="0" x2="2.5" y2="0.45" class="net" />
+
+        <line x1="0" y1="0.22" x2="3" y2="0.22" class="net" />
       </g>
 
-      <g transform="translate(8.5 30)">
-        <rect width="3" height="0.6" class="goal" />
-        <line x1="0.5" y1="0" x2="0.5" y2="0.6" class="net" />
-        <line x1="1" y1="0" x2="1" y2="0.6" class="net" />
-        <line x1="1.5" y1="0" x2="1.5" y2="0.6" class="net" />
-        <line x1="2" y1="0" x2="2" y2="0.6" class="net" />
-        <line x1="2.5" y1="0" x2="2.5" y2="0.6" class="net" />
-        <line x1="0" y1="0.3" x2="3" y2="0.3" class="net" />
+      <!-- Nedre mål -->
+      <g transform="translate(8.5,30)">
+        <rect width="3" height="0.45" class="goal" />
+
+        <line x1="0.5" y1="0" x2="0.5" y2="0.45" class="net" />
+        <line x1="1" y1="0" x2="1" y2="0.45" class="net" />
+        <line x1="1.5" y1="0" x2="1.5" y2="0.45" class="net" />
+        <line x1="2" y1="0" x2="2" y2="0.45" class="net" />
+        <line x1="2.5" y1="0" x2="2.5" y2="0.45" class="net" />
+
+        <line x1="0" y1="0.22" x2="3" y2="0.22" class="net" />
       </g>
 
       <!-- Testspelare -->
-      <circle cx="10" cy="15" r="0.45" fill="#1976d2" stroke="#111" stroke-width="0.08" />
+      <circle
+        cx="10"
+        cy="15"
+        r="0.45"
+        class="player-blue"
+      />
+
     </svg>
+
   </div>
+
+  <script src="app.js"></script>
+
 </body>
 </html>
