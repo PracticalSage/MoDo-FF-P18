@@ -1,1 +1,45 @@
+body {
+  margin: 0;
+  background: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
 
+.app {
+  width: 94vw;
+  max-width: 520px;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: white;
+  border-radius: 6px;
+}
+
+.field-line {
+  stroke: white;
+  stroke-width: 0.18;
+  fill: none;
+}
+
+.goal {
+  fill: #eeeeee;
+  stroke: #555;
+  stroke-width: 0.08;
+}
+
+.net {
+  stroke: #777;
+  stroke-width: 0.03;
+}
+
+.player-blue {
+  fill: #1976d2;
+  stroke: #111;
+  stroke-width: 0.08;
+}
