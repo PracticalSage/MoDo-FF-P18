@@ -58,3 +58,29 @@ svg {
 #player1 {
   touch-action: none;
 }
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.toolbar button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  background: #f2f2f2;
+}
+
+.player-red {
+  fill: #d32f2f;
+  stroke: #111;
+  stroke-width: 0.08;
+}
+
+.cone {
+  fill: #f28c1c;
+  stroke: #7a3f00;
+  stroke-width: 0.08;
+}
