@@ -47,7 +47,7 @@ function addPlayer(type) {
 
   player.setAttribute("cx", 10);
   player.setAttribute("cy", 15);
-  player.setAttribute("r", 0.45);
+  player.setAttribute("r", 0.60);
   player.setAttribute("class", type === "blue" ? "player-blue" : "player-red");
 
   svg.appendChild(player);
