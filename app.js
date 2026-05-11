@@ -1,5 +1,9 @@
 const svg = document.querySelector("svg");
+const drawPassButton = document.getElementById("drawPass");
 
+let currentTool = "move";
+let drawingLine = null;
+let startPoint = null;
 const addBlueButton = document.getElementById("addBlue");
 const addRedButton = document.getElementById("addRed");
 const addConeButton = document.getElementById("addCone");
