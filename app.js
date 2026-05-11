@@ -32,7 +32,7 @@ function moveElement(element, x, y) {
   }
 
   if (element.tagName === "polygon") {
-    const size = 0.55;
+    const size = 0.38;
     const points = `
       ${x},${y - size}
       ${x - size},${y + size}
