@@ -43,3 +43,11 @@ svg {
   stroke: #111;
   stroke-width: 0.08;
 }
+svg {
+  touch-action: none;
+}
+
+.player-blue {
+  cursor: grab;
+  touch-action: none;
+}
