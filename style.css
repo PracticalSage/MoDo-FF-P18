@@ -84,3 +84,9 @@ svg {
   stroke: #7a3f00;
   stroke-width: 0.08;
 }
+.pass-line {
+  stroke: #111;
+  stroke-width: 0.12;
+  fill: none;
+  marker-end: url(#arrowhead);
+}
