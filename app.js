@@ -1,7 +1,10 @@
 const svg = document.querySelector("svg");
-const player = document.getElementById("player1");
 
-let dragging = false;
+const addBlueButton = document.getElementById("addBlue");
+const addRedButton = document.getElementById("addRed");
+const addConeButton = document.getElementById("addCone");
+
+let selected = null;
 
 function getPoint(clientX, clientY) {
   const point = svg.createSVGPoint();
@@ -10,42 +13,82 @@ function getPoint(clientX, clientY) {
   return point.matrixTransform(svg.getScreenCTM().inverse());
 }
 
-function movePlayer(clientX, clientY) {
-  const p = getPoint(clientX, clientY);
-  player.setAttribute("cx", p.x);
-  player.setAttribute("cy", p.y);
+function makeDraggable(element) {
+  element.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    selected = element;
+  }, { passive: false });
+
+  element.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    selected = element;
+  });
 }
 
-// Start drag
-player.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  dragging = true;
-}, { passive: false });
+function moveElement(element, x, y) {
+  if (element.tagName === "circle") {
+    element.setAttribute("cx", x);
+    element.setAttribute("cy", y);
+  }
 
-player.addEventListener("mousedown", (e) => {
-  e.preventDefault();
-  dragging = true;
-});
+  if (element.tagName === "polygon") {
+    const size = 0.55;
+    const points = `
+      ${x},${y - size}
+      ${x - size},${y + size}
+      ${x + size},${y + size}
+    `;
+    element.setAttribute("points", points);
+  }
+}
 
-// Move
+function addPlayer(type) {
+  const player = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+
+  player.setAttribute("cx", 10);
+  player.setAttribute("cy", 15);
+  player.setAttribute("r", 0.45);
+  player.setAttribute("class", type === "blue" ? "player-blue" : "player-red");
+
+  svg.appendChild(player);
+  makeDraggable(player);
+}
+
+function addCone() {
+  const cone = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+
+  cone.setAttribute("class", "cone");
+  moveElement(cone, 10, 15);
+
+  svg.appendChild(cone);
+  makeDraggable(cone);
+}
+
 svg.addEventListener("touchmove", (e) => {
-  if (!dragging) return;
+  if (!selected) return;
   e.preventDefault();
 
   const touch = e.touches[0];
-  movePlayer(touch.clientX, touch.clientY);
+  const p = getPoint(touch.clientX, touch.clientY);
+
+  moveElement(selected, p.x, p.y);
 }, { passive: false });
 
 svg.addEventListener("mousemove", (e) => {
-  if (!dragging) return;
-  movePlayer(e.clientX, e.clientY);
+  if (!selected) return;
+
+  const p = getPoint(e.clientX, e.clientY);
+  moveElement(selected, p.x, p.y);
 });
 
-// Stop drag
 svg.addEventListener("touchend", () => {
-  dragging = false;
+  selected = null;
 });
 
 svg.addEventListener("mouseup", () => {
-  dragging = false;
+  selected = null;
 });
+
+addBlueButton.addEventListener("click", () => addPlayer("blue"));
+addRedButton.addEventListener("click", () => addPlayer("red"));
+addConeButton.addEventListener("click", addCone);
