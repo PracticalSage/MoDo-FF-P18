@@ -32,7 +32,7 @@ function moveElement(element, x, y) {
   }
 
   if (element.tagName === "polygon") {
-    const size = 0.25;
+    const size = 0.35;
     const points = `
       ${x},${y - size}
       ${x - size},${y + size}
@@ -47,7 +47,7 @@ function addPlayer(type) {
 
   player.setAttribute("cx", 10);
   player.setAttribute("cy", 15);
-  player.setAttribute("r", 0.60);
+  player.setAttribute("r", 0.50);
   player.setAttribute("class", type === "blue" ? "player-blue" : "player-red");
 
   svg.appendChild(player);
