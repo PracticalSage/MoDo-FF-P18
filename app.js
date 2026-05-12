@@ -22,7 +22,9 @@ function moveElement(element, x, y) {
     element.setAttribute("cx", x);
     element.setAttribute("cy", y);
   }
-
+if (element.tagName === "g") {
+  element.setAttribute("transform", `translate(${x} ${y})`);
+}
   if (element.tagName === "polygon" && element.classList.contains("cone")) {
     const size = 0.32;
     element.setAttribute(
@@ -65,15 +67,23 @@ function addCone() {
 }
 
 function addBall() {
-  const ball = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-  ball.setAttribute("cx", 10);
-  ball.setAttribute("cy", 15);
-  ball.setAttribute("r", 0.22);
-  ball.setAttribute("class", "ball");
+  const ball = document.createElementNS("http://www.w3.org/2000/svg", "g");
+
+  ball.setAttribute("class", "ball-object");
+  ball.setAttribute("transform", "translate(10 15)");
+
+  ball.innerHTML = `
+    <circle cx="0" cy="0" r="0.32" class="ball" />
+    <circle cx="0" cy="0" r="0.09" fill="#111" />
+    <circle cx="-0.14" cy="-0.13" r="0.05" fill="#111" />
+    <circle cx="0.15" cy="-0.12" r="0.05" fill="#111" />
+    <circle cx="-0.16" cy="0.13" r="0.05" fill="#111" />
+    <circle cx="0.16" cy="0.13" r="0.05" fill="#111" />
+  `;
+
   svg.appendChild(ball);
   makeDraggable(ball);
 }
-
 function startPassLine(x, y) {
   drawingLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
   drawingLine.setAttribute("x1", x);
@@ -139,6 +149,7 @@ svg.addEventListener("mousemove", (e) => {
   if (selected) {
     moveElement(selected, p.x, p.y);
   }
+  
 });
 
 svg.addEventListener("touchend", () => {
