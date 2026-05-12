@@ -74,17 +74,16 @@ function addBall() {
   outer.setAttribute("cx", 0);
   outer.setAttribute("cy", 0);
   outer.setAttribute("r", 0.36);
-  outer.setAttribute("style", "fill:white; stroke:#111; stroke-width:0.03;");
+  outer.setAttribute("style", "fill:white; stroke:#111; stroke-width:0.6;");
   ball.appendChild(outer);
 
   const dots = [
-    [0, 0, 0.07],
-    [-0.13, -0.12, 0.04],
-    [0.13, -0.12, 0.04],
-    [-0.13, 0.12, 0.04],
-    [0.13, 0.12, 0.04]
-  ];
-
+  [0, 0, 0.10],
+  [-0.15, -0.13, 0.06],
+  [0.15, -0.13, 0.06],
+  [-0.15, 0.13, 0.06],
+  [0.15, 0.13, 0.06]
+];
   dots.forEach(([x, y, r]) => {
     const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     dot.setAttribute("cx", x);
