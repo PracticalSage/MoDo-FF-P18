@@ -163,3 +163,4 @@ drawPassButton.addEventListener("click", () => {
   currentTool = "pass";
 });
 addBallButton.addEventListener("click", addBall);
+});
