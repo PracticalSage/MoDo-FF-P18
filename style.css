@@ -90,3 +90,8 @@ svg {
   fill: none;
   marker-end: url(#arrowhead);
 }
+.ball {
+  fill: white;
+  stroke: #111;
+  stroke-width: 0.08;
+}
