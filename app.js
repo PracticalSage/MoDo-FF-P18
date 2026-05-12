@@ -3,8 +3,9 @@ const svg = document.querySelector("svg");
 const addBlueButton = document.getElementById("addBlue");
 const addRedButton = document.getElementById("addRed");
 const addConeButton = document.getElementById("addCone");
-const drawPassButton = document.getElementById("drawPass");
 const addBallButton = document.getElementById("addBall");
+const drawPassButton = document.getElementById("drawPass");
+
 let selected = null;
 let currentTool = "move";
 let drawingLine = null;
@@ -24,12 +25,10 @@ function moveElement(element, x, y) {
 
   if (element.tagName === "polygon" && element.classList.contains("cone")) {
     const size = 0.32;
-    const points = `
-      ${x},${y - size}
-      ${x - size * 0.7},${y + size}
-      ${x + size * 0.7},${y + size}
-    `;
-    element.setAttribute("points", points);
+    element.setAttribute(
+      "points",
+      `${x},${y - size} ${x - size * 0.7},${y + size} ${x + size * 0.7},${y + size}`
+    );
   }
 }
 
@@ -65,6 +64,16 @@ function addCone() {
   makeDraggable(cone);
 }
 
+function addBall() {
+  const ball = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  ball.setAttribute("cx", 10);
+  ball.setAttribute("cy", 15);
+  ball.setAttribute("r", 0.22);
+  ball.setAttribute("class", "ball");
+  svg.appendChild(ball);
+  makeDraggable(ball);
+}
+
 function startPassLine(x, y) {
   drawingLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
   drawingLine.setAttribute("x1", x);
@@ -85,20 +94,7 @@ function finishPassLine() {
   drawingLine = null;
   currentTool = "move";
 }
-function addBall() {
-  const ball = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "circle"
-  );
 
-  ball.setAttribute("cx", 10);
-  ball.setAttribute("cy", 15);
-  ball.setAttribute("r", 0.22);
-  ball.setAttribute("class", "ball");
-
-  svg.appendChild(ball);
-  makeDraggable(ball);
-}
 svg.addEventListener("touchstart", (e) => {
   if (currentTool !== "pass") return;
   e.preventDefault();
@@ -154,15 +150,12 @@ svg.addEventListener("mouseup", () => {
   if (drawingLine) finishPassLine();
   selected = null;
 });
+
 addBlueButton.addEventListener("click", () => addPlayer("blue"));
 addRedButton.addEventListener("click", () => addPlayer("red"));
 addConeButton.addEventListener("click", addCone);
+addBallButton.addEventListener("click", addBall);
 
 drawPassButton.addEventListener("click", () => {
   currentTool = "pass";
-});
-
-addBallButton.addEventListener("click", () => {
-  alert("Bollknappen funkar");
-  addBall();
 });
