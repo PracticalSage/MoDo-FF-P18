@@ -153,7 +153,6 @@ svg.addEventListener("touchend", () => {
 svg.addEventListener("mouseup", () => {
   if (drawingLine) finishPassLine();
   selected = null;
-});
 
 addBlueButton.addEventListener("click", () => addPlayer("blue"));
 addRedButton.addEventListener("click", () => addPlayer("red"));
