@@ -85,18 +85,17 @@ function addBall() {
   const outer = document.createElementNS("http://www.w3.org/2000/svg", "circle");
   outer.setAttribute("cx", 0);
   outer.setAttribute("cy", 0);
-  outer.setAttribute("r", 0.36);
+  outer.setAttribute("r", 0.38);
   outer.setAttribute("style", "fill:white; stroke:#111; stroke-width:0.6;");
   ball.appendChild(outer);
 
 const hexagons = [
-  [0, 0, 0.09],
-  [-0.15, -0.13, 0.055],
-  [0.15, -0.13, 0.055],
-  [-0.15, 0.13, 0.055],
-  [0.15, 0.13, 0.055]
+  [0, 0, 0.05],
+  [-0.12, -0.10, 0.03],
+  [0.12, -0.10, 0.03],
+  [-0.12, 0.10, 0.03],
+  [0.12, 0.10, 0.03]
 ];
-
 hexagons.forEach(([x, y, r]) => {
   const hex = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
   hex.setAttribute("points", hexagonPoints(x, y, r));
