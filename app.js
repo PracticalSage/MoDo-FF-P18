@@ -65,21 +65,38 @@ function addCone() {
   svg.appendChild(cone);
   makeDraggable(cone);
 }
-
 function addBall() {
   const ball = document.createElementNS("http://www.w3.org/2000/svg", "g");
-
   ball.setAttribute("class", "ball-object");
   ball.setAttribute("transform", "translate(10 15)");
 
-  ball.innerHTML = `
-    <circle cx="0" cy="0" r="0.32" class="ball" />
-    <circle cx="0" cy="0" r="0.09" fill="#111" />
-    <circle cx="-0.14" cy="-0.13" r="0.05" fill="#111" />
-    <circle cx="0.15" cy="-0.12" r="0.05" fill="#111" />
-    <circle cx="-0.16" cy="0.13" r="0.05" fill="#111" />
-    <circle cx="0.16" cy="0.13" r="0.05" fill="#111" />
-  `;
+  const outer = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  outer.setAttribute("cx", 0);
+  outer.setAttribute("cy", 0);
+  outer.setAttribute("r", 0.35);
+  outer.setAttribute("fill", "white");
+  outer.setAttribute("stroke", "#111");
+  outer.setAttribute("stroke-width", 0.08);
+
+  ball.appendChild(outer);
+
+  const dots = [
+    [0, 0, 0.09],
+    [-0.16, -0.14, 0.055],
+    [0.16, -0.14, 0.055],
+    [-0.17, 0.14, 0.055],
+    [0.17, 0.14, 0.055]
+  ];
+
+  dots.forEach(([x, y, r]) => {
+    const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    dot.setAttribute("cx", x);
+    dot.setAttribute("cy", y);
+    dot.setAttribute("r", r);
+    dot.setAttribute("fill", "#111");
+    dot.setAttribute("stroke", "none");
+    ball.appendChild(dot);
+  });
 
   svg.appendChild(ball);
   makeDraggable(ball);
