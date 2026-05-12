@@ -4,7 +4,7 @@ const addBlueButton = document.getElementById("addBlue");
 const addRedButton = document.getElementById("addRed");
 const addConeButton = document.getElementById("addCone");
 const drawPassButton = document.getElementById("drawPass");
-
+const addBallButton = document.getElementById("addBall");
 let selected = null;
 let currentTool = "move";
 let drawingLine = null;
@@ -85,7 +85,20 @@ function finishPassLine() {
   drawingLine = null;
   currentTool = "move";
 }
+function addBall() {
+  const ball = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "circle"
+  );
 
+  ball.setAttribute("cx", 10);
+  ball.setAttribute("cy", 15);
+  ball.setAttribute("r", 0.22);
+  ball.setAttribute("class", "ball");
+
+  svg.appendChild(ball);
+  makeDraggable(ball);
+}
 svg.addEventListener("touchstart", (e) => {
   if (currentTool !== "pass") return;
   e.preventDefault();
@@ -149,3 +162,4 @@ addConeButton.addEventListener("click", addCone);
 drawPassButton.addEventListener("click", () => {
   currentTool = "pass";
 });
+addBallButton.addEventListener("click", addBall);
