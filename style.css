@@ -90,8 +90,14 @@ svg {
   fill: none;
   marker-end: url(#arrowhead);
 }
+
+.ball-object circle:not(.ball) {
+  fill: #111;
+  stroke: none;
+}
+
 .ball {
   fill: white;
   stroke: #111;
-  stroke-width: 0.08;
+  stroke-width: 0.14;
 }
