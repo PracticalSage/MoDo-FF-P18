@@ -91,22 +91,4 @@ svg {
   marker-end: url(#arrowhead);
 }
 
-.ball-object circle:not(.ball) {
-  fill: #111;
-  stroke: none;
-}
 
-.ball {
-  fill: white;
-  stroke: #111;
-  stroke-width: 0.08;
-}
-.ball-object circle {
-  stroke: none;
-}
-
-.ball-object > circle:first-child {
-  fill: white;
-  stroke: #111;
-  stroke-width: 0.03;
-}
