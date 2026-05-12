@@ -65,6 +65,18 @@ function addCone() {
   svg.appendChild(cone);
   makeDraggable(cone);
 }
+function hexagonPoints(cx, cy, r) {
+  const points = [];
+
+  for (let i = 0; i < 6; i++) {
+    const angle = Math.PI / 6 + i * Math.PI / 3;
+    const x = cx + r * Math.cos(angle);
+    const y = cy + r * Math.sin(angle);
+    points.push(`${x},${y}`);
+  }
+
+  return points.join(" ");
+}
 function addBall() {
   const ball = document.createElementNS("http://www.w3.org/2000/svg", "g");
   ball.setAttribute("class", "ball-object");
@@ -77,13 +89,20 @@ function addBall() {
   outer.setAttribute("style", "fill:white; stroke:#111; stroke-width:0.6;");
   ball.appendChild(outer);
 
-  const dots = [
-  [0, 0, 0.10],
-  [-0.15, -0.13, 0.06],
-  [0.15, -0.13, 0.06],
-  [-0.15, 0.13, 0.06],
-  [0.15, 0.13, 0.06]
+const hexagons = [
+  [0, 0, 0.09],
+  [-0.15, -0.13, 0.055],
+  [0.15, -0.13, 0.055],
+  [-0.15, 0.13, 0.055],
+  [0.15, 0.13, 0.055]
 ];
+
+hexagons.forEach(([x, y, r]) => {
+  const hex = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+  hex.setAttribute("points", hexagonPoints(x, y, r));
+  hex.setAttribute("style", "fill:#111; stroke:none;");
+  ball.appendChild(hex);
+});
   dots.forEach(([x, y, r]) => {
     const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     dot.setAttribute("cx", x);
