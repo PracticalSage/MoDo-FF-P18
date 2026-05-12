@@ -74,27 +74,23 @@ function addBall() {
   outer.setAttribute("cx", 0);
   outer.setAttribute("cy", 0);
   outer.setAttribute("r", 0.36);
-  outer.setAttribute("fill", "white");
-  outer.setAttribute("stroke", "#111");
-  outer.setAttribute("stroke-width", 0.03);
-
+  outer.setAttribute("style", "fill:white; stroke:#111; stroke-width:0.03;");
   ball.appendChild(outer);
 
-const dots = [
-  [0, 0, 0.075],
-  [-0.13, -0.12, 0.04],
-  [0.13, -0.12, 0.04],
-  [-0.13, 0.12, 0.04],
-  [0.13, 0.12, 0.04]
-];
+  const dots = [
+    [0, 0, 0.07],
+    [-0.13, -0.12, 0.04],
+    [0.13, -0.12, 0.04],
+    [-0.13, 0.12, 0.04],
+    [0.13, 0.12, 0.04]
+  ];
 
   dots.forEach(([x, y, r]) => {
     const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     dot.setAttribute("cx", x);
     dot.setAttribute("cy", y);
     dot.setAttribute("r", r);
-    dot.setAttribute("fill", "#111");
-    dot.setAttribute("stroke", "none");
+    dot.setAttribute("style", "fill:#111; stroke:none;");
     ball.appendChild(dot);
   });
 
