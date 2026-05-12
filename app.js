@@ -76,7 +76,7 @@ function addBall() {
   outer.setAttribute("r", 0.35);
   outer.setAttribute("fill", "white");
   outer.setAttribute("stroke", "#111");
-  outer.setAttribute("stroke-width", 0.12);
+  outer.setAttribute("stroke-width", 0.04);
 
   ball.appendChild(outer);
 
