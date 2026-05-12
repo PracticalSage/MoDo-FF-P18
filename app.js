@@ -161,5 +161,8 @@ addConeButton.addEventListener("click", addCone);
 drawPassButton.addEventListener("click", () => {
   currentTool = "pass";
 });
-addBallButton.addEventListener("click", addBall);
+
+addBallButton.addEventListener("click", () => {
+  alert("Bollknappen funkar");
+  addBall();
 });
