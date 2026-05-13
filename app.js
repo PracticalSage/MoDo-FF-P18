@@ -81,8 +81,8 @@ function addBall() {
 
   svg.appendChild(ball);
   makeDraggable(ball);
-
 }
+
 function startPassLine(x, y) {
   drawingLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
   drawingLine.setAttribute("x1", x);
